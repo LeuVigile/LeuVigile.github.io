@@ -12,6 +12,8 @@
 			top: 0;
 			left: 0;
 			padding: 20px;
+			float: left;
+			width: 15%;
 		}
 
 		.sidebar ul {
@@ -36,9 +38,14 @@
 		.sidebar a:hover {
 			background-color: #ddd;
 		}
+
+		.content {
+		float: right;
+		width: 80%; /* ajuster la largeur en fonction de vos besoins */
+		}
 	</style>
 </head>
-<body onload="afficher()">
+<body onload="">
 	<div class="sidebar">
 		<ul>
 			<li><a href="index.html">Dashboard</a></li>
@@ -47,7 +54,18 @@
 		</ul>
 	</div>
 	<div class="content">
-    
+		<form id="formulaire-joueur">
+			<label for="nom">Nom :</label>
+			<input type="text" id="nom" name="nom"><br>
+		  
+			<label for="id">ID :</label>
+			<input type="text" id="id" name="id"><br>
+		  
+			<label for="missions">Nombre de missions :</label>
+			<input type="text" id="missions" name="missions"><br>
+		  
+			<button type="submit" id="valider" onclick="add_player()">Valider</button>
+		  </form>		  
 	</div>
 </body>
 </html>
