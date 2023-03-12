@@ -1,34 +1,15 @@
-function add_player(){
-      const nom = document.getElementById("nom").value;
-      const id = document.getElementById("id").value;
-      const missions = document.getElementById("missions").value;
+function add_player() {
+    //récupérer valeurs du formulaire
+    var nom = document.getElementById("nom").value;
+    var discord_id = document.getElementById("discord_id").value;
+    var roblox_id = document.getElementById("roblox_id").value;
+    var nb_op = document.getElementById("nb_op").value;
     
-      // Récupère les données du fichier data.json
-      fetch("data.json")
-        .then(response => response.json())
-        .then(data => {
-          // Ajoute un nouvel objet joueur aux données existantes
-          data.joueurs.push({
-            nom: nom,
-            id: id,
-            missions: missions
-          });
-    
-          // Envoie les données mises à jour vers le serveur
-          fetch("data.json", {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          })
-            .then(response => {
-              console.log("Données mises à jour avec succès !");
-            })
-            .catch(error => {
-              console.error("Erreur lors de la mise à jour des données : ", error);
-            });
-        })
-        .catch(error => {
-          console.error("Erreur lors de la récupération des données : ", error);
-        });}
+    // Ajouter les données à Firebase
+    firebase.database().ref('joueurs/' + nom).set({
+      nb_op: nb_op,
+      roblox_id: roblox_id,
+      discord_id: discord_id
+    });
+  }
+  
