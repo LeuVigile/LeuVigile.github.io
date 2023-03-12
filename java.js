@@ -6,7 +6,7 @@ function add_player() {
     var nb_op = document.getElementById("nb_op").value;
     
     // Ajouter les données à Firebase
-    firebase.database().ref('joueurs/' + nom).set({
+    firebase.database().ref('Joueurs/' + nom).set({
       nb_op: nb_op,
       roblox_id: roblox_id,
       discord_id: discord_id
